@@ -1,6 +1,6 @@
 import { Photo } from '../types/photo'
 import { storage } from '../config/firebase'
-import { ref, listAll, getDownloadURL, uploadBytes } from 'firebase/storage'
+import { ref, listAll, getDownloadURL, uploadBytes, getStorage, deleteObject } from 'firebase/storage'
 import { v4 as createId } from 'uuid'
 
 export const getAll = async () => {
@@ -33,4 +33,18 @@ export const insert = async (file: File) => {
   } else {
     return new Error('Tipo de arquivo não permitido.')
   }
+}
+
+type Props = {
+  name: string | number
+}
+
+export const deleteFile = async ({ name }:Props) => {
+  const storage = getStorage()
+  const desertRef = ref(storage, `images/${name}`)
+  deleteObject(desertRef).then(() => {
+    console.log('deletado com sucesso')
+  }).catch((error) => {
+    console.log(error)
+  })
 }
