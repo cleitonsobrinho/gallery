@@ -17,12 +17,13 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [photos, setPhotos] = useState<Photo[]>([])
 
+  const getPhotos = async () => {
+    setLoading(true)
+    setPhotos(await Photos.getAll())
+    setLoading(false)
+  }
+
   useEffect(() => {
-    const getPhotos = async () => {
-      setLoading(true)
-      setPhotos(await Photos.getAll())
-      setLoading(false)
-    }
     getPhotos()
   }, [])
 
