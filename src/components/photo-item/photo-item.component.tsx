@@ -1,9 +1,15 @@
-import * as C from './photo-item.styles'
+
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { deleteObject, getStorage, ref } from 'firebase/storage'
 import { useContext } from 'react'
+
+// Components
 import { PhotosContext } from '../../contexts/context'
 
+// Styles
+import * as C from './photo-item.styles'
+
+// Types
 type Props = {
     url: string
     name: string | number
@@ -12,6 +18,7 @@ type Props = {
 type PropsName = {
   name: string | number
 }
+
 const PhotoItem = ({ url, name }: Props) => {
   const { getPhotos } = useContext(PhotosContext)
   const deleteFile = async ({ name }:PropsName) => {

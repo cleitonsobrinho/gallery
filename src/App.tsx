@@ -6,12 +6,11 @@ import { BsEmojiFrown } from 'react-icons/bs'
 import PhotoItem from './components/photo-item/photo-item.component'
 
 // Utilities
-/*  */
+import { PhotosContext } from './contexts/context'
 
 // Styles
 import * as C from './App.styles'
 import * as Photos from './services/photos'
-import { PhotosContext } from './contexts/context'
 
 const App = () => {
   const { upLoading, setUploading, loading, photos, setPhotos, getPhotos } = useContext(PhotosContext)
