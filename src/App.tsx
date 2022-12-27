@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent } from 'react'
+import { useEffect, FormEvent, useContext } from 'react'
 import { MdDownloading } from 'react-icons/md'
 import { BsEmojiFrown } from 'react-icons/bs'
 
@@ -6,22 +6,15 @@ import { BsEmojiFrown } from 'react-icons/bs'
 import PhotoItem from './components/photo-item/photo-item.component'
 
 // Utilities
-import { Photo } from './types/photo'
+/*  */
 
 // Styles
 import * as C from './App.styles'
 import * as Photos from './services/photos'
+import { PhotosContext } from './contexts/context'
 
 const App = () => {
-  const [upLoading, setUploading] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [photos, setPhotos] = useState<Photo[]>([])
-
-  const getPhotos = async () => {
-    setLoading(true)
-    setPhotos(await Photos.getAll())
-    setLoading(false)
-  }
+  const { upLoading, setUploading, loading, photos, setPhotos, getPhotos } = useContext(PhotosContext)
 
   useEffect(() => {
     getPhotos()
