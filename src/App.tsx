@@ -4,8 +4,6 @@ import { BsEmojiFrown } from 'react-icons/bs'
 
 // Components
 import PhotoItem from './components/photo-item/photo-item.component'
-
-// Utilities
 import { PhotosContext } from './contexts/context'
 
 // Styles
